@@ -17,12 +17,14 @@ async function init(server) {
 
     console.log('--- NS new socket:', socket.id);
 
-    let t = setTimeout(test, 5000);
+    // let t = setTimeout(test, 5000);
 
     socket.on('disconnect', (reason) => {
       console.log('NS socket', socket.id, 'has disconnected:', reason);
-      clearTimeout(t);
+      // clearTimeout(t);
     })
+
+    return Instance;
   });
 
 
@@ -58,16 +60,16 @@ async function send(channel, data) {
 }
 
 
-function test() {
-  send('/XXX-XXXX-XXX',{
-    "action": "base_navigation",
-    "responseText": "ok vado in film",
-    "name": "opensection",
-    "params": {
-      "destination": "film"
-    }
-  })
-}
+// function test() {
+//   send('/XXX-XXXX-XXX',{
+//     "action": "base_navigation",
+//     "responseText": "ok vado in film",
+//     "name": "opensection",
+//     "params": {
+//       "destination": "film"
+//     }
+//   })
+// }
 
 
 module.exports = {init, send};

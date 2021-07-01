@@ -44,7 +44,7 @@ async function parse(query, lang = 'it-IT') {
   } else {
     console.log('  No intent matched');
   }
-  console.log( JSON.stringify(result, null, 2));
+  // console.log( JSON.stringify(result, null, 2));
 
 
   return {
@@ -69,6 +69,6 @@ async function parse(query, lang = 'it-IT') {
 // })
 
 
-module.export = {
+module.exports = {
   parse
 };

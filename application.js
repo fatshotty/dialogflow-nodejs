@@ -4,7 +4,7 @@ const DialogFlow = require('./dialogflow/dialogflow');
 const HTTPServer = require('http');
 const SocketIO = require('./sockets/socketio')
 
-
+let SIO = null;
 const App =  Express();
 
 App.use( BodyParser.json() )
@@ -19,7 +19,7 @@ App.use( (err, req, res, next) => {
     }
 
 
-    if ( !res.statusCde ) {
+    if ( !res.statusCode ) {
       res.status(200);
     }
 
@@ -37,12 +37,12 @@ App.param('channel_id', (req, res, next, value) => {
 
 
   // TODO: search channels in socket.io instances
-  let channel_found = false;
+  // let channel_found = false;
 
 
-  if ( ! channel_found ) {
-    return next( new Error('no channel found') );
-  }
+  // if ( ! channel_found ) {
+  //   return next( new Error('no channel found') );
+  // }
 
   next();
 
