@@ -29,7 +29,7 @@ App.use( (err, req, res, next) => {
 
 
 
-App.param('channel_id', (value, req, res, next) => {
+App.param('channel_id', (req, res, next, value) => {
 
   if ( !value ) {
     return next( new Error('specify channel, please') );
