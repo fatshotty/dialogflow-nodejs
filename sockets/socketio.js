@@ -13,7 +13,7 @@ async function init(server) {
     next()
   })
   
-  Instance.of(/^\/[a-z]{3}-[a-z]{4}-[a-z]{3}$/gi).on('connection', (socket) => {
+  Instance.of(/^\/[a-z]{3}-[a-z]{4}-[a-z|0-9]{3}$/gi).on('connection', (socket) => {
 
     console.log('--- NS new socket:', socket.id);
 
@@ -31,11 +31,11 @@ async function init(server) {
   Instance.on('connection', (socket) => {
     console.log('--- new socket:', socket.id);
 
-    let t = setTimeout(test, 5000);
+    // let t = setTimeout(test, 5000);
 
     socket.on('disconnect', (reason) => {
       console.log('socket', socket.id, 'has disconnected:', reason);
-      clearTimeout(t);
+      // clearTimeout(t);
     })
     
 

@@ -51,6 +51,7 @@ async function parse(query, lang = 'it-IT') {
     action: result.action,
     responseText: result.fulfillmentText,
     name: result.intent.displayName,
+    question: result.queryText,
     params: (() => {
       let keys = Object.keys(result.parameters.fields);
       let res = {};

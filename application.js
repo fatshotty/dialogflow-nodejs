@@ -63,6 +63,19 @@ App.post('/v/:channel_id', async (req, res, next) => {
 });
 
 
+App.get('/v/:channel_id', async (req, res, next) => {
+
+  let channel = req.params.channel_id;
+
+  let command = await DialogFlow.parse( req.query.text );
+
+  SocketIO.send( channel, command );
+
+  next('OK');
+
+});
+
+
 const Server = HTTPServer.createServer(App);
 
 SocketIO.init(Server);
